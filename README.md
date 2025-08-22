@@ -1,69 +1,81 @@
-# React + TypeScript + Vite
+# 🛍️ E-Commerce Site (React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple frontend-only e-commerce site built using **React**, **TypeScript**, and **Vite**.  
+This project demonstrates product listing, product details, cart functionality, and filtering — all without a backend or database.  
+Products are stored locally in a `assets/all_product.ts` file.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📸 Screenshots
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🚀 Features
+- React + TypeScript (frontend only)
+- Product listing & details page
+- Simple cart functionality
+- Category-based filtering (Men, Women, Kids)
+- Local product storage (`all_product.ts`)
+- Dockerized setup for easy deployment
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Tech Stack
+- **Frontend:** React + TypeScript + Vite
+- **Styling:** Tailwind CSS
+- **State Management:** React Context / Hooks
+- **Build Tool:** Vite
+- **Containerization:** Docker
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Installation & Running
+
+### 1️⃣ Without Docker
+```bash
+# Clone repository
+git clone https://github.com/your-username/ecom-react-ts.git
+cd ecom-react-ts
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build Docker image
+docker build -t ecom-react-ts .
+
+# Run container
+docker run -p 5173:5173 ecom-react-ts
+
+
+ecom-react-ts/
+├── src/
+│   ├── assets/
+│   │   └── all_product.ts
+│   ├── components/
+│   ├── pages/
+│   ├── App.tsx
+│   └── main.tsx
+├── public/
+├── docs/screenshots/   # store screenshots here
+├── package.json
+├── Dockerfile
+└── README.md
+
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+EXPOSE 5173
+CMD ["npm", "run", "dev", "--", "--host"]
