@@ -1,5 +1,5 @@
-import { ArrowLeftIcon, ArrowRightIcon, HandIcon } from 'lucide-react'
-import React from 'react'
+import {  ArrowRightIcon } from 'lucide-react'
+// import React from 'react'
 import heroImage from "../assets/hero_image.png"
 
 const HeroPage = () => {
