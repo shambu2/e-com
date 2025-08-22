@@ -7,7 +7,11 @@ Products are stored locally in a `assets/all_product.ts` file.
 ---
 
 ## 📸 Screenshots
+![Landing Page](src/assets/landing.png)
 
+![features_page](src/assets/features.png)
+
+![footer](src/assets/feeter.png)
 
 
 ---
